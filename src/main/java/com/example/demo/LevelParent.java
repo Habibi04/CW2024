@@ -178,6 +178,7 @@ public abstract class LevelParent extends Observable {
 				if (actor.getBoundsInParent().intersects(otherActor.getBoundsInParent())) {
 					actor.takeDamage();
 					otherActor.takeDamage();
+					user.decrementKillCount();
 				}
 			}
 		}
