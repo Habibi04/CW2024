@@ -19,15 +19,14 @@ public class MainMenu extends Observable {
         // Create the start button
         Button startButton = new Button("Start Game");
         startButton.setPrefWidth(200);  // Set a preferred width
-        startButton.setPrefHeight(50);  // Set a preferred height
+        startButton.setPrefHeight(50);// Set a preferred height
 
         // Use StackPane to center the button
         StackPane root = new StackPane();
-        root.setAlignment(Pos.CENTER);  // Align the button at the center
         root.getChildren().add(startButton);
 
         // Create scene with explicit size
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(root, 1300, 750);// Align the button at the center
 
         // Debug: Set the background color to see the layout
         root.setStyle("-fx-background-color: lightblue;");
@@ -35,8 +34,9 @@ public class MainMenu extends Observable {
         // Set the scene to the stage and make sure it's visible
         stage.setScene(scene);
         stage.setTitle("Main Menu");
-        stage.setWidth(800);
-        stage.setHeight(600);
+        stage.setWidth(1300);
+        stage.setHeight(750);
+        root.setAlignment(Pos.CENTER);
         stage.show();
 
         // Set up the button click event to notify the controller
@@ -49,3 +49,4 @@ public class MainMenu extends Observable {
         return scene;
     }
 }
+
