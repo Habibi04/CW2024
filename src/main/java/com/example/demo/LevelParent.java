@@ -32,6 +32,7 @@ public abstract class LevelParent extends Observable {
 	
 	private int currentNumberOfEnemies;
 	private LevelView levelView;
+	private boolean isPaused = false;
 
 	public LevelParent(String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
 		this.root = new Group();
@@ -51,6 +52,25 @@ public abstract class LevelParent extends Observable {
 		this.currentNumberOfEnemies = 0;
 		initializeTimeline();
 		friendlyUnits.add(user);
+	}
+	public void pauseGame() {
+		if (!isPaused) {
+			timeline.pause();
+			isPaused = true;
+		}
+	}
+
+	// Resume game method
+	public void resumeGame() {
+		if (isPaused) {
+			timeline.play();
+			isPaused = false;
+		}
+	}
+
+	// Check if game is paused
+	public boolean isGamePaused() {
+		return isPaused;
 	}
 
 	protected abstract void initializeFriendlyUnits();

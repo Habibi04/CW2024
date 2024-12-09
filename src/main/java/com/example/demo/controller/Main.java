@@ -25,6 +25,7 @@ public class Main extends Application {
 
 		MainMenu mainMenu = new MainMenu();
 		mainMenu.show(stage);
+
 	}
 
 	public static void main(String[] args) {

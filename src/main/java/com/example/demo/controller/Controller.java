@@ -8,14 +8,19 @@ import java.util.Observer;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import com.example.demo.LevelParent;
 import com.example.demo.MainMenu;
+import com.example.demo.PauseMenu;
 
 public class Controller implements Observer {
 
 	private static final String LEVEL_ONE_CLASS_NAME = "com.example.demo.LevelOne";
 	private final Stage stage;
+	private PauseMenu pauseMenu;
+	private Scene levelScene;
+	private LevelParent currentLevel;
 
 	public Controller(Stage stage) {
 		this.stage = stage;
@@ -33,17 +38,39 @@ public class Controller implements Observer {
 		// Use reflection to instantiate the level class dynamically
 		Class<?> myClass = Class.forName(className);
 		Constructor<?> constructor = myClass.getConstructor(double.class, double.class);
-		LevelParent myLevel = (LevelParent) constructor.newInstance(stage.getHeight(), stage.getWidth());
+		currentLevel = (LevelParent) constructor.newInstance(stage.getHeight(), stage.getWidth());
 
 		// Add observer to the level
-		myLevel.addObserver(this);
+		currentLevel.addObserver(this);
 
 		// Initialize the scene for the level and set it on the stage
-		Scene levelScene = myLevel.initializeScene();
+		levelScene = currentLevel.initializeScene();
+
+		// Create pause menu
+		pauseMenu = new PauseMenu(
+				levelScene,
+				() -> {
+					// Resume game logic
+					currentLevel.resumeGame(); // You'll need to add this method to LevelParent
+				},
+				() -> {
+					// Return to main menu
+					MainMenu mainMenu = new MainMenu();
+					mainMenu.show(stage);
+				}
+		);
+
+		// Add key handler to show pause menu
+		levelScene.setOnKeyPressed(event -> {
+			if (event.getCode() == KeyCode.ESCAPE) {
+				pauseMenu.show();
+			}
+		});
+
 		stage.setScene(levelScene);
 
 		// Start the level game
-		myLevel.startGame();
+		currentLevel.startGame();
 	}
 
 	@Override
