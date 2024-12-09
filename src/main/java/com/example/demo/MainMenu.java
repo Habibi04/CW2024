@@ -1,52 +1,70 @@
 package com.example.demo;
 
-import java.util.Observable;
-import javafx.geometry.Pos;
+import com.example.demo.controller.Controller;
+import javafx.application.Application;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.layout.BackgroundImage;
+
+import java.util.Objects;
+import java.util.Observable;
+
 
 public class MainMenu extends Observable {
+    private static final String backgroundImageName = "/com/example/demo/images/Mainmenu.jpg";
+    private static final int SCREEN_WIDTH = 1300;
+    private static final int SCREEN_HEIGHT = 750;
 
-    private final Stage stage;
+    public void show(Stage stage) {
+        // Create the layout for the main menu
+        Group menuLayout = new Group();
+        menuLayout.setStyle("-fx-alignment: center; -fx-padding: 50; -fx-background-color: #000;");
 
-    public MainMenu(Stage stage) {
-        this.stage = stage;
-    }
+        VBox buttonLayout = new VBox(20);
+        buttonLayout.setTranslateX(SCREEN_WIDTH * 0.75);
+        buttonLayout.setTranslateY(SCREEN_HEIGHT / 2);
 
-    public Scene createMainMenuScene() {
-        // Create the start button
-        Button startButton = new Button("Start Game");
-        startButton.setPrefWidth(200);  // Set a preferred width
-        startButton.setPrefHeight(50);// Set a preferred height
+        // Add buttons to the main menu
+        Button startGameButton = new Button("Start Game");
+        Button exitButton = new Button("Exit");
 
-        // Use StackPane to center the button
-        StackPane root = new StackPane();
-        root.getChildren().add(startButton);
+        // Style the buttons
+        startGameButton.setStyle("-fx-font-size: 20; -fx-background-color: #00A; -fx-text-fill: #FFF;");
+        exitButton.setStyle("-fx-font-size: 20; -fx-background-color: #A00; -fx-text-fill: #FFF;");
 
-        // Create scene with explicit size
-        Scene scene = new Scene(root, 1300, 750);// Align the button at the center
+        buttonLayout.getChildren().addAll(startGameButton, exitButton);
+        menuLayout.getChildren().addAll(buttonLayout);
 
-        // Debug: Set the background color to see the layout
-        root.setStyle("-fx-background-color: lightblue;");
+        // Create the scene for the main menu
+        Scene mainMenuScene = new Scene(menuLayout, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-        // Set the scene to the stage and make sure it's visible
-        stage.setScene(scene);
-        stage.setTitle("Main Menu");
-        stage.setWidth(1300);
-        stage.setHeight(750);
-        root.setAlignment(Pos.CENTER);
-        stage.show();
+        ImageView background = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(backgroundImageName)).toExternalForm()));
+        background.setViewOrder(1);
+        background.setPreserveRatio(true);
+        background.setFitWidth(SCREEN_WIDTH);
+        menuLayout.getChildren().add(background);
 
-        // Set up the button click event to notify the controller
-        startButton.setOnAction(event -> {
-            // Mark that the state has changed and notify observers (Controller)
-            setChanged();
-            notifyObservers("com.example.demo.LevelOne");
+        // Set button actions
+        startGameButton.setOnAction(e -> {
+            try {
+                Controller controller = new Controller(stage);
+                controller.launchGame();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         });
 
-        return scene;
+        exitButton.setOnAction(e -> {
+            stage.close();
+        });
+
+        // Set the stage to the main menu scene
+        stage.setScene(mainMenuScene);
+        stage.show();
     }
 }
-

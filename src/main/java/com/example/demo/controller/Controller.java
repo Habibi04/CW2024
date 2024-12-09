@@ -16,28 +16,14 @@ public class Controller implements Observer {
 
 	private static final String LEVEL_ONE_CLASS_NAME = "com.example.demo.LevelOne";
 	private final Stage stage;
-	private MainMenu mainMenu;
 
 	public Controller(Stage stage) {
 		this.stage = stage;
-
-		// Initialize the main menu
-		mainMenu = new MainMenu(stage);
-		mainMenu.addObserver(this);
 	}
 
-	public void launchGame() {
-		// Set a default size for the stage (it will remain fixed in this example)
-		stage.setWidth(800);
-		stage.setHeight(600);
-
-		// Start with the main menu scene
-		Scene mainMenuScene = mainMenu.createMainMenuScene();
-		stage.setScene(mainMenuScene);
-		stage.show();  // Display the stage
-
-		// Ensure the Main Menu scene is displayed first
-		mainMenu.createMainMenuScene();
+	public void launchGame() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+		stage.show();
+		goToLevel(LEVEL_ONE_CLASS_NAME);
 	}
 
 	private void goToLevel(String className) throws ClassNotFoundException, NoSuchMethodException,

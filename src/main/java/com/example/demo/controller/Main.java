@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.lang.reflect.InvocationTargetException;
 
+import com.example.demo.MainMenu;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -21,6 +22,9 @@ public class Main extends Application {
 		stage.setWidth(SCREEN_WIDTH);
 		myController = new Controller(stage);
 		myController.launchGame();
+
+		MainMenu mainMenu = new MainMenu();
+		mainMenu.show(stage);
 	}
 
 	public static void main(String[] args) {
