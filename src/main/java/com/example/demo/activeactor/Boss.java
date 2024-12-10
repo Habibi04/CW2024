@@ -1,8 +1,10 @@
-package com.example.demo;
+package com.example.demo.activeactor;
+
+import com.example.demo.userinterface.ShieldImage;
 
 import java.util.*;
 
-public class Boss extends FighterPlane {
+public class Boss extends FighterAircraft {
 
 	private static final String IMAGE_NAME = "bossplane.png";
 	private static final double INITIAL_X_POSITION = 800;
@@ -56,7 +58,7 @@ public class Boss extends FighterPlane {
 
 	@Override
 	public ActiveActorDestructible fireProjectile() {
-		return bossFiresInCurrentFrame() ? new BossProjectile(getProjectileInitialPosition()) : null;
+		return bossFiresInCurrentFrame() ? new BossMissile(getProjectileInitialPosition()) : null;
 	}
 	
 	@Override

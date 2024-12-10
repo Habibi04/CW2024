@@ -1,14 +1,14 @@
 package com.example.demo;
 
+import com.example.demo.activeactor.PlayerAircraft;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 public class InputManager {
     private static InputManager instance;
 
-    private UserPlane user;
+    private PlayerAircraft user;
     private Runnable runnable;
 
     public static InputManager getInstance() {
@@ -18,7 +18,7 @@ public class InputManager {
         return instance;
     }
 
-    public void initialize(Node background, UserPlane user, Runnable runnable) {
+    public void initialize(Node background, PlayerAircraft user, Runnable runnable) {
         this.user = user;
         this.runnable = runnable;
         initializeBackgroundInputs(background);

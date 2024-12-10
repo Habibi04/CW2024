@@ -10,13 +10,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import com.example.demo.LevelParent;
-import com.example.demo.MainMenu;
-import com.example.demo.PauseMenu;
+import com.example.demo.level.LevelParent;
+import com.example.demo.userinterface.MainMenu;
+import com.example.demo.userinterface.PauseMenu;
 
 public class Controller implements Observer {
 
-	private static final String LEVEL_ONE_CLASS_NAME = "com.example.demo.LevelOne";
+	private static final String LEVEL_ONE_CLASS_NAME = "com.example.demo.level.LevelOne";
 	private final Stage stage;
 	private PauseMenu pauseMenu;
 	private Scene levelScene;

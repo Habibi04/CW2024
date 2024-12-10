@@ -1,6 +1,6 @@
-package com.example.demo;
+package com.example.demo.activeactor;
 
-public class UserPlane extends FighterPlane {
+public class PlayerAircraft extends FighterAircraft {
 
 	private static final String IMAGE_NAME = "userplane.png";
 	private static final double X_LOWER_BOUND = 1000;
@@ -18,7 +18,7 @@ public class UserPlane extends FighterPlane {
 	private int velocityMultiplierVertical;
 	private int numberOfKills;
 
-	public UserPlane(int initialHealth) {
+	public PlayerAircraft(int initialHealth) {
 		super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, initialHealth);
 		velocityMultiplierVertical = 0;
 	}
@@ -51,7 +51,7 @@ public class UserPlane extends FighterPlane {
 	
 	@Override
 	public ActiveActorDestructible fireProjectile() {
-		return new UserProjectile(getTranslateX() + 128, getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET));
+		return new UserMissile(getTranslateX() + 128, getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET));
 	}
 
 	private boolean isMovingHorizontal() {

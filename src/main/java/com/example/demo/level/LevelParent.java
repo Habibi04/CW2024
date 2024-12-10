@@ -1,14 +1,16 @@
-package com.example.demo;
+package com.example.demo.level;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+import com.example.demo.activeactor.ActiveActorDestructible;
+import com.example.demo.activeactor.FighterAircraft;
+import com.example.demo.InputManager;
+import com.example.demo.activeactor.PlayerAircraft;
 import javafx.animation.*;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.*;
-import javafx.scene.input.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -22,7 +24,7 @@ public abstract class LevelParent extends Observable {
 
 	private final Group root;
 	private final Timeline timeline;
-	private final UserPlane user;
+	private final PlayerAircraft user;
 	private final Scene scene;
 	private final ImageView background;
 
@@ -47,7 +49,7 @@ public abstract class LevelParent extends Observable {
 		this.root = new Group();
 		this.scene = new Scene(root, screenWidth, screenHeight);
 		this.timeline = new Timeline();
-		this.user = new UserPlane(playerInitialHealth);
+		this.user = new PlayerAircraft(playerInitialHealth);
 		this.friendlyUnits = new ArrayList<>();
 		this.enemyUnits = new ArrayList<>();
 		this.userProjectiles = new ArrayList<>();
@@ -136,7 +138,7 @@ public abstract class LevelParent extends Observable {
 	}
 
 	private void generateEnemyFire() {
-		enemyUnits.forEach(enemy -> spawnEnemyProjectile(((FighterPlane) enemy).fireProjectile()));
+		enemyUnits.forEach(enemy -> spawnEnemyProjectile(((FighterAircraft) enemy).fireProjectile()));
 	}
 
 	private void spawnEnemyProjectile(ActiveActorDestructible projectile) {
@@ -225,7 +227,7 @@ public abstract class LevelParent extends Observable {
 		levelView.showGameOverImage();
 	}
 
-	protected UserPlane getUser() {
+	protected PlayerAircraft getUser() {
 		return user;
 	}
 

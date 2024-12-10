@@ -1,18 +1,18 @@
-package com.example.demo;
+package com.example.demo.level;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.util.Duration;
+import com.example.demo.activeactor.ActiveActorDestructible;
+import com.example.demo.activeactor.EnemyAircraft;
 
-public class LevelFour extends LevelParent {
+public class LevelThree extends LevelParent {
 
     private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background1.jpg";
+    private static final String NEXT_LEVEL = "com.example.demo.level.LevelFour"; // Assuming you have a Level Four
     private static final int TOTAL_ENEMIES = 8;
     private static final int KILLS_TO_ADVANCE = 3;
     private static final double ENEMY_SPAWN_PROBABILITY = .30;
     private static final int PLAYER_INITIAL_HEALTH = 4;
 
-    public LevelFour(double screenHeight, double screenWidth) {
+    public LevelThree(double screenHeight, double screenWidth) {
         super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
     }
 
@@ -22,25 +22,7 @@ public class LevelFour extends LevelParent {
             loseGame();
         }
         else if (userHasReachedKillTarget())
-            winGame();
-    }
-
-    @Override
-    protected void winGame() {
-        super.winGame();
-
-        Timeline timeline = new Timeline();
-        KeyFrame keyFrame = new KeyFrame(
-                Duration.seconds(3),
-                event -> {
-                    pauseGame();
-                    MainMenu mainMenu = new MainMenu();
-                    mainMenu.show(getStage());
-                }
-        );
-
-        timeline.getKeyFrames().add(keyFrame);
-        timeline.play();
+            goToNextLevel(NEXT_LEVEL);
     }
 
     @Override
@@ -59,10 +41,10 @@ public class LevelFour extends LevelParent {
                 ActiveActorDestructible newEnemy;
                 if (Math.random() < 0.3) { // 30% chance of spawning a tanky enemy
                     //newEnemy = new TankyEnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
-                    newEnemy = new MovingBossPlane(getScreenWidth(), newEnemyInitialYPosition);
+                    newEnemy = new EnemyAircraft(getScreenWidth(), newEnemyInitialYPosition);
 
                 } else {
-                    newEnemy = new MovingBossPlane(getScreenWidth(), newEnemyInitialYPosition);
+                    newEnemy = new EnemyAircraft(getScreenWidth(), newEnemyInitialYPosition);
                 }
 
                 addEnemyUnit(newEnemy);
