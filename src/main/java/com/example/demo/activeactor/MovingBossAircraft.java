@@ -7,7 +7,7 @@ public class MovingBossAircraft extends FighterAircraft {
 	private static final int HORIZONTAL_VELOCITY = -6;
 	private static final double PROJECTILE_X_POSITION_OFFSET = -100.0;
 	private static final double PROJECTILE_Y_POSITION_OFFSET = 50.0;
-	private static final int INITIAL_HEALTH = 1;
+	private static final int INITIAL_HEALTH = 10;
 	private static final double FIRE_RATE = .01;
 
 	public MovingBossAircraft(double initialXPos, double initialYPos) {
