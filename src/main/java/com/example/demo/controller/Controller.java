@@ -39,6 +39,7 @@ public class Controller implements Observer {
 		Class<?> myClass = Class.forName(className);
 		Constructor<?> constructor = myClass.getConstructor(double.class, double.class);
 		currentLevel = (LevelParent) constructor.newInstance(stage.getHeight(), stage.getWidth());
+		currentLevel.setStage(stage);
 
 		// Add observer to the level
 		currentLevel.addObserver(this);
@@ -51,7 +52,7 @@ public class Controller implements Observer {
 				levelScene,
 				() -> {
 					// Resume game logic
-					currentLevel.resumeGame(); // You'll need to add this method to LevelParent
+					currentLevel.resumeGame();
 				},
 				() -> {
 					// Return to main menu
@@ -63,6 +64,7 @@ public class Controller implements Observer {
 		// Add key handler to show pause menu
 		levelScene.setOnKeyPressed(event -> {
 			if (event.getCode() == KeyCode.ESCAPE) {
+				currentLevel.pauseGame();
 				pauseMenu.show();
 			}
 		});
