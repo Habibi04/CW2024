@@ -5,7 +5,7 @@ import com.example.demo.activeactor.EnemyAircraft;
 
 public class LevelThree extends LevelParent {
 
-    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background1.jpg";
+    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background3.jpg";
     private static final String NEXT_LEVEL = "com.example.demo.level.LevelFour"; // Assuming you have a Level Four
     private static final int TOTAL_ENEMIES = 10;
     private static final int KILLS_TO_ADVANCE = 15;

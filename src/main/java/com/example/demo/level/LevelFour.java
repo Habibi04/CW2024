@@ -9,7 +9,7 @@ import javafx.util.Duration;
 
 public class LevelFour extends LevelParent {
 
-    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background1.jpg";
+    private static final String BACKGROUND_IMAGE_NAME = "/com/example/demo/images/background4.jpg";
     private static final int TOTAL_ENEMIES = 2;
     private static final int KILLS_TO_ADVANCE = 3;
     private static final double ENEMY_SPAWN_PROBABILITY = .30;
