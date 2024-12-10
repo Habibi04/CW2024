@@ -9,6 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.*;
 import javafx.scene.input.*;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public abstract class LevelParent extends Observable {
@@ -29,10 +30,18 @@ public abstract class LevelParent extends Observable {
 	private final List<ActiveActorDestructible> enemyUnits;
 	private final List<ActiveActorDestructible> userProjectiles;
 	private final List<ActiveActorDestructible> enemyProjectiles;
-	
+
+	private Stage stage;
 	private int currentNumberOfEnemies;
 	private LevelView levelView;
-	private boolean isPaused = false;
+
+	public Stage getStage() {
+		return stage;
+	}
+
+	public void setStage(Stage stage) {
+		this.stage = stage;
+	}
 
 	public LevelParent(String backgroundImageName, double screenHeight, double screenWidth, int playerInitialHealth) {
 		this.root = new Group();
@@ -54,23 +63,12 @@ public abstract class LevelParent extends Observable {
 		friendlyUnits.add(user);
 	}
 	public void pauseGame() {
-		if (!isPaused) {
-			timeline.pause();
-			isPaused = true;
-		}
+		timeline.pause();
 	}
 
 	// Resume game method
 	public void resumeGame() {
-		if (isPaused) {
-			timeline.play();
-			isPaused = false;
-		}
-	}
-
-	// Check if game is paused
-	public boolean isGamePaused() {
-		return isPaused;
+		timeline.play();
 	}
 
 	protected abstract void initializeFriendlyUnits();
@@ -124,20 +122,10 @@ public abstract class LevelParent extends Observable {
 		background.setFocusTraversable(true);
 		background.setFitHeight(screenHeight);
 		background.setFitWidth(screenWidth);
-		background.setOnKeyPressed(new EventHandler<KeyEvent>() {
-			public void handle(KeyEvent e) {
-				KeyCode kc = e.getCode();
-				if (kc == KeyCode.UP) user.moveUp();
-				if (kc == KeyCode.DOWN) user.moveDown();
-				if (kc == KeyCode.SPACE) fireProjectile();
-			}
-		});
-		background.setOnKeyReleased(new EventHandler<KeyEvent>() {
-			public void handle(KeyEvent e) {
-				KeyCode kc = e.getCode();
-				if (kc == KeyCode.UP || kc == KeyCode.DOWN) user.stop();
-			}
-		});
+
+		// Get the InputManager singleton
+		InputManager inputManager = InputManager.getInstance(background, user, this::fireProjectile);
+
 		root.getChildren().add(background);
 	}
 
