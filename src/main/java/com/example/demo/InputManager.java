@@ -8,21 +8,20 @@ import javafx.scene.input.KeyEvent;
 public class InputManager {
     private static InputManager instance;
 
-    private UserPlane user; // Assuming User is a class that has movement methods
+    private UserPlane user;
     private Runnable runnable;
 
-    // Private constructor to prevent instantiation
-    private InputManager(Node background, UserPlane user, Runnable runnable) {
+    public static InputManager getInstance() {
+        if (instance == null) {
+            instance = new InputManager();
+        }
+        return instance;
+    }
+
+    public void initialize(Node background, UserPlane user, Runnable runnable) {
         this.user = user;
         this.runnable = runnable;
         initializeBackgroundInputs(background);
-    }
-
-    public static InputManager getInstance(Node background, UserPlane user, Runnable runnable) {
-        if (instance == null) {
-            instance = new InputManager(background, user, runnable);
-        }
-        return instance;
     }
 
     private void initializeBackgroundInputs(Node background) {

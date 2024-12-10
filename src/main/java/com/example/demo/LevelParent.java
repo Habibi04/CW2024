@@ -124,7 +124,7 @@ public abstract class LevelParent extends Observable {
 		background.setFitWidth(screenWidth);
 
 		// Get the InputManager singleton
-		InputManager inputManager = InputManager.getInstance(background, user, this::fireProjectile);
+		InputManager.getInstance().initialize(background, user, this::fireProjectile);
 
 		root.getChildren().add(background);
 	}
