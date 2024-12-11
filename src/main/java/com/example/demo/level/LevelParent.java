@@ -3,10 +3,12 @@ package com.example.demo.level;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import com.example.demo.SoundManager;
 import com.example.demo.activeactor.ActiveActorDestructible;
 import com.example.demo.activeactor.FighterAircraft;
 import com.example.demo.InputManager;
 import com.example.demo.activeactor.PlayerAircraft;
+import com.example.demo.userinterface.MainMenu;
 import javafx.animation.*;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -37,6 +39,7 @@ public abstract class LevelParent extends Observable {
 	private Stage stage;
 	private int currentNumberOfEnemies;
 	private LevelView levelView;
+	private boolean isPaused;
 
 	public Stage getStage() {
 		return stage;
@@ -62,17 +65,20 @@ public abstract class LevelParent extends Observable {
 		this.enemyMaximumYPosition = screenHeight - SCREEN_HEIGHT_ADJUSTMENT;
 		this.levelView = instantiateLevelView();
 		this.currentNumberOfEnemies = 0;
+		this.isPaused = false;
 		initializeTimeline();
 		friendlyUnits.add(user);
 	}
 
 	public void pauseGame() {
 		timeline.pause();
+		isPaused = true;
 	}
 
 	// Resume game method
 	public void resumeGame() {
 		timeline.play();
+		isPaused = false;
 	}
 
 	protected abstract void initializeFriendlyUnits();
@@ -146,9 +152,11 @@ public abstract class LevelParent extends Observable {
 	}
 
 	private void fireProjectile() {
-		ActiveActorDestructible projectile = user.fireProjectile();
-		root.getChildren().add(projectile);
-		userProjectiles.add(projectile);
+		if (!isPaused) {
+			ActiveActorDestructible projectile = user.fireProjectile();
+			root.getChildren().add(projectile);
+			userProjectiles.add(projectile);
+		}
 	}
 
 	public void spawnEnemyProjectile(ActiveActorDestructible projectile) {
@@ -230,11 +238,30 @@ public abstract class LevelParent extends Observable {
 	protected void winGame() {
 		timeline.stop();
 		levelView.showWinImage();
+		SoundManager.playSound("P1942_00014.wav");
+		SoundManager.stopBackgroundSound();
 	}
 
 	protected void loseGame() {
 		timeline.stop();
 		levelView.showGameOverImage();
+		SoundManager.playSound("P1942_00014.wav");
+		SoundManager.stopBackgroundSound();
+
+		pauseGame();
+		System.out.println(timeline.getStatus());
+
+		Timeline timeline = new Timeline();
+		KeyFrame keyFrame = new KeyFrame(
+				Duration.seconds(3),
+				event -> {
+					MainMenu mainMenu = new MainMenu();
+					mainMenu.show(getStage());
+				}
+		);
+
+		timeline.getKeyFrames().add(keyFrame);
+		timeline.play();
 	}
 
 	protected PlayerAircraft getUser() {

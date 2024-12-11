@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.Observable;
 import java.util.Observer;
 
+import com.example.demo.SoundManager;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -35,6 +36,7 @@ public class Controller implements Observer {
 			SecurityException, InstantiationException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException {
 
+		SoundManager.playBackgroundSound();
 		// Use reflection to instantiate the level class dynamically
 		Class<?> myClass = Class.forName(className);
 		Constructor<?> constructor = myClass.getConstructor(double.class, double.class);

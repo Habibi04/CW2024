@@ -32,11 +32,12 @@ public class LevelFour extends LevelParent {
     protected void winGame() {
         super.winGame();
 
+        pauseGame();
+
         Timeline timeline = new Timeline();
         KeyFrame keyFrame = new KeyFrame(
                 Duration.seconds(3),
                 event -> {
-                    pauseGame();
                     MainMenu mainMenu = new MainMenu();
                     mainMenu.show(getStage());
                 }

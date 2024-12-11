@@ -31,7 +31,6 @@ public class PlayerAircraft extends FighterAircraft {
 			double initialTranslateX = getTranslateX();
 			this.moveHorizontally(HORIZONTAL_VELOCITY * velocityMultiplierHorizontal);
 			double newPosition = getLayoutX() + getTranslateX();
-			System.out.println(newPosition >= X_LOWER_BOUND && newPosition <= X_UPPER_BOUND);
 			if (newPosition < X_UPPER_BOUND || newPosition > X_LOWER_BOUND)
 				this.setTranslateX(initialTranslateX);
 		}
