@@ -14,7 +14,7 @@ import java.util.Observable;
 
 
 public class MainMenu extends Observable {
-    private static final String backgroundImageName = "/com/example/demo/images/Mainmenu.jpg";
+    private static final String backgroundImageName = "/com/example/demo/images/SKYBLAZER.jpg";
     private static final int SCREEN_WIDTH = 1300;
     private static final int SCREEN_HEIGHT = 750;
 
