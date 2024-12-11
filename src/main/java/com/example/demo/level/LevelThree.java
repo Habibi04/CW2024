@@ -16,6 +16,16 @@ public class LevelThree extends LevelParent {
         super(BACKGROUND_IMAGE_NAME, screenHeight, screenWidth, PLAYER_INITIAL_HEALTH);
     }
 
+    /**
+     * Determines if the game has reached the end conditions for the current level.
+     *
+     * This method checks two potential game-ending conditions:
+     * 1. If the user's character has been destroyed, the game will end, triggering the `loseGame` method.
+     * 2. If the user has achieved the required kill target, the game will transition to the next level using `goToNextLevel`.
+     *
+     * The kill target and the next level are defined by level-specific constants.
+     * This method should be invoked periodically to monitor the game's progression state.
+     */
     @Override
     protected void checkIfGameOver() {
         if (userIsDestroyed()) {
@@ -41,10 +51,10 @@ public class LevelThree extends LevelParent {
                 ActiveActorDestructible newEnemy;
                 if (Math.random() < 0.3) { // 30% chance of spawning a tanky enemy
                     //newEnemy = new TankyEnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
-                    newEnemy = new EnemyAircraft(getScreenWidth(), newEnemyInitialYPosition);
+                    newEnemy = new EnemyAircraft(this, getScreenWidth(), newEnemyInitialYPosition);
 
                 } else {
-                    newEnemy = new EnemyAircraft(getScreenWidth(), newEnemyInitialYPosition);
+                    newEnemy = new EnemyAircraft(this, getScreenWidth(), newEnemyInitialYPosition);
                 }
 
                 addEnemyUnit(newEnemy);

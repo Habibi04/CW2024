@@ -58,7 +58,15 @@ public class Controller implements Observer {
 					// Return to main menu
 					MainMenu mainMenu = new MainMenu();
 					mainMenu.show(stage);
-				}
+				},
+                () -> {
+                    try {
+                        restartCurrentLevel();
+                    } catch (ClassNotFoundException | IllegalAccessException | InstantiationException |
+                             NoSuchMethodException | InvocationTargetException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
 		);
 
 		// Add key handler to show pause menu
@@ -73,6 +81,12 @@ public class Controller implements Observer {
 
 		// Start the level game
 		currentLevel.startGame();
+	}
+
+	private void restartCurrentLevel() throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+		currentLevel.pauseGame();
+
+		goToLevel(currentLevel.getClass().toString().split(" ")[1]);
 	}
 
 	@Override

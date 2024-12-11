@@ -62,10 +62,10 @@ public class LevelFour extends LevelParent {
                 ActiveActorDestructible newEnemy;
                 if (Math.random() < 0.3) { // 30% chance of spawning a tanky enemy
                     //newEnemy = new TankyEnemyPlane(getScreenWidth(), newEnemyInitialYPosition);
-                    newEnemy = new MovingBossAircraft(getScreenWidth(), newEnemyInitialYPosition);
+                    newEnemy = new MovingBossAircraft(this, getScreenWidth(), newEnemyInitialYPosition);
 
                 } else {
-                    newEnemy = new MovingBossAircraft(getScreenWidth(), newEnemyInitialYPosition);
+                    newEnemy = new MovingBossAircraft(this, getScreenWidth(), newEnemyInitialYPosition);
                 }
 
                 addEnemyUnit(newEnemy);

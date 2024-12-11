@@ -1,5 +1,6 @@
 package com.example.demo.activeactor;
 
+import com.example.demo.level.LevelParent;
 import com.example.demo.userinterface.ShieldImage;
 
 import java.util.*;
@@ -21,6 +22,7 @@ public class Boss extends FighterAircraft {
 	private static final int Y_POSITION_UPPER_BOUND = -100;
 	private static final int Y_POSITION_LOWER_BOUND = 475;
 	private static final int MAX_FRAMES_WITH_SHIELD = 500;
+	private final LevelParent levelParent;
 	private final List<Integer> movePattern;
 	private boolean isShielded;
 	private int consecutiveMovesInSameDirection;
@@ -28,8 +30,9 @@ public class Boss extends FighterAircraft {
 	private int framesWithShieldActivated;
 	private final ShieldImage shieldImage;
 
-	public Boss() {
+	public Boss(LevelParent levelParent) {
 		super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, HEALTH);
+		this.levelParent = levelParent;
 		movePattern = new ArrayList<>();
 		consecutiveMovesInSameDirection = 0;
 		indexOfCurrentMove = 0;
@@ -54,6 +57,7 @@ public class Boss extends FighterAircraft {
 	public void updateActor() {
 		updatePosition();
 		updateShield();
+		levelParent.spawnEnemyProjectile(fireProjectile());
 	}
 
 	@Override

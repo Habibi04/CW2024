@@ -1,6 +1,5 @@
 package com.example.demo.userinterface;
 
-
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
@@ -18,11 +17,13 @@ public class PauseMenu {
     private Scene gameScene;
     private Runnable resumeCallback;
     private Runnable mainMenuCallback;
+    private Runnable restartCallback;
 
-    public PauseMenu(Scene gameScene, Runnable resumeCallback, Runnable mainMenuCallback) {
+    public PauseMenu(Scene gameScene, Runnable resumeCallback, Runnable mainMenuCallback, Runnable restartCallback) {
         this.gameScene = gameScene;
         this.resumeCallback = resumeCallback;
         this.mainMenuCallback = mainMenuCallback;
+        this.restartCallback = restartCallback;
 
         pauseStage = new Stage();
         pauseStage.initModality(Modality.APPLICATION_MODAL);
@@ -41,11 +42,15 @@ public class PauseMenu {
         resumeButton.setStyle("-fx-font-size: 16px; -fx-min-width: 200px;");
         resumeButton.setOnAction(e -> resumeGame());
 
+        Button restartButton = new Button("Restart");
+        restartButton.setStyle("-fx-font-size: 16px; -fx-min-width: 200px;");
+        restartButton.setOnAction(e -> restartGame());
+
         Button endGameButton = new Button("End Game");
         endGameButton.setStyle("-fx-font-size: 16px; -fx-min-width: 200px;");
         endGameButton.setOnAction(e -> endGame());
 
-        pauseLayout.getChildren().addAll(resumeButton, endGameButton);
+        pauseLayout.getChildren().addAll(resumeButton, restartButton, endGameButton);
 
         Scene pauseScene = new Scene(pauseLayout, 300, 250);
         pauseStage.setScene(pauseScene);
@@ -58,6 +63,13 @@ public class PauseMenu {
     private void resumeGame() {
         if (resumeCallback != null) {
             resumeCallback.run();
+        }
+        pauseStage.close();
+    }
+
+    private void restartGame() {
+        if (restartCallback != null) {
+            restartCallback.run();
         }
         pauseStage.close();
     }

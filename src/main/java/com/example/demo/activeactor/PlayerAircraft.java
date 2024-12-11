@@ -1,5 +1,7 @@
 package com.example.demo.activeactor;
 
+import com.example.demo.SoundManager;
+
 public class PlayerAircraft extends FighterAircraft {
 
 	private static final String IMAGE_NAME = "userplane.png";
@@ -51,6 +53,7 @@ public class PlayerAircraft extends FighterAircraft {
 	
 	@Override
 	public ActiveActorDestructible fireProjectile() {
+		SoundManager.playSound("P1942_00004.wav");
 		return new UserMissile(getTranslateX() + 128, getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET));
 	}
 

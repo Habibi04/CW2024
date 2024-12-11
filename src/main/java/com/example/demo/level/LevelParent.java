@@ -10,6 +10,7 @@ import com.example.demo.activeactor.PlayerAircraft;
 import javafx.animation.*;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -64,6 +65,7 @@ public abstract class LevelParent extends Observable {
 		initializeTimeline();
 		friendlyUnits.add(user);
 	}
+
 	public void pauseGame() {
 		timeline.pause();
 	}
@@ -83,6 +85,7 @@ public abstract class LevelParent extends Observable {
 
 	public Scene initializeScene() {
 		initializeBackground();
+		initializeLevelText();
 		initializeFriendlyUnits();
 		levelView.showHeartDisplay();
 		return scene;
@@ -102,7 +105,6 @@ public abstract class LevelParent extends Observable {
 	private void updateScene() {
 		spawnEnemyUnits();
 		updateActors();
-		generateEnemyFire();
 		updateNumberOfEnemies();
 		handleEnemyPenetration();
 		handleUserProjectileCollisions();
@@ -131,17 +133,25 @@ public abstract class LevelParent extends Observable {
 		root.getChildren().add(background);
 	}
 
+	private void initializeLevelText() {
+		String levelName = getClass().toString().split("\\.")[4];
+		levelName = levelName.substring(0, 5) + " " + levelName.substring(5);
+
+		Label label = new Label(levelName);
+		label.setTranslateX(stage.getWidth() / 2);
+		label.setTranslateY(32);
+		label.setScaleX(4);
+		label.setScaleY(4);
+		root.getChildren().add(label);
+	}
+
 	private void fireProjectile() {
 		ActiveActorDestructible projectile = user.fireProjectile();
 		root.getChildren().add(projectile);
 		userProjectiles.add(projectile);
 	}
 
-	private void generateEnemyFire() {
-		enemyUnits.forEach(enemy -> spawnEnemyProjectile(((FighterAircraft) enemy).fireProjectile()));
-	}
-
-	private void spawnEnemyProjectile(ActiveActorDestructible projectile) {
+	public void spawnEnemyProjectile(ActiveActorDestructible projectile) {
 		if (projectile != null) {
 			root.getChildren().add(projectile);
 			enemyProjectiles.add(projectile);
