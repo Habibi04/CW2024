@@ -1,5 +1,6 @@
 package com.example.demo.userinterface;
 
+import com.example.demo.SoundManager;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
@@ -57,10 +58,13 @@ public class PauseMenu {
     }
 
     public void show() {
+        SoundManager.stopBackgroundSound();
         pauseStage.showAndWait();
     }
 
     private void resumeGame() {
+        SoundManager.playBackgroundSound();
+
         if (resumeCallback != null) {
             resumeCallback.run();
         }
