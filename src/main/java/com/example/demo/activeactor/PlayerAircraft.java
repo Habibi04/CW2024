@@ -2,29 +2,59 @@ package com.example.demo.activeactor;
 
 import com.example.demo.SoundManager;
 
+/**
+ * Represents the player-controlled aircraft in the game.
+ * Handles player movement, boundary checking, projectile firing, and kill counting.
+ * Extends FighterAircraft to inherit basic aircraft functionality.
+ */
 public class PlayerAircraft extends FighterAircraft {
 
+	/** The filename of the player aircraft sprite image */
 	private static final String IMAGE_NAME = "userplane.png";
+	/** Right boundary limit for player movement */
 	private static final double X_LOWER_BOUND = 1000;
+	/** Left boundary limit for player movement */
 	private static final double X_UPPER_BOUND = 0;
+	/** Upper boundary limit for player movement */
 	private static final double Y_UPPER_BOUND = -40;
+	/** Lower boundary limit for player movement */
 	private static final double Y_LOWER_BOUND = 600.0;
+	/** Starting X position for the player aircraft */
 	private static final double INITIAL_X_POSITION = 5.0;
+	/** Starting Y position for the player aircraft */
 	private static final double INITIAL_Y_POSITION = 300.0;
+	/** Height of the player aircraft sprite in pixels */
 	private static final int IMAGE_HEIGHT = 50;
+	/** Base horizontal movement speed */
 	private static final int HORIZONTAL_VELOCITY = 8;
+	/** Base vertical movement speed */
 	private static final int VERTICAL_VELOCITY = 8;
+	/** Horizontal offset for projectile spawn position */
 	private static final int PROJECTILE_X_POSITION = 110;
+	/** Vertical offset for projectile spawn position */
 	private static final int PROJECTILE_Y_POSITION_OFFSET = 20;
+
+	/** Direction multiplier for horizontal movement (-1 for left, 0 for none, 1 for right) */
 	private int velocityMultiplierHorizontal;
+	/** Direction multiplier for vertical movement (-1 for up, 0 for none, 1 for down) */
 	private int velocityMultiplierVertical;
+	/** Counter for enemy aircraft destroyed by the player */
 	private int numberOfKills;
 
+	/**
+	 * Constructs a new PlayerAircraft with specified initial health.
+	 *
+	 * @param initialHealth The starting health points of the player aircraft
+	 */
 	public PlayerAircraft(int initialHealth) {
 		super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, initialHealth);
 		velocityMultiplierVertical = 0;
 	}
-	
+
+	/**
+	 * Updates the aircraft's position based on current movement multipliers.
+	 * Checks and enforces boundary limits for both horizontal and vertical movement.
+	 */
 	@Override
 	public void updatePosition() {
 		if (isMovingHorizontal()) {
@@ -44,57 +74,108 @@ public class PlayerAircraft extends FighterAircraft {
 			}
 		}
 	}
-	
+
+	/**
+	 * Performs per-frame updates for the player aircraft.
+	 * Currently only updates position.
+	 */
 	@Override
 	public void updateActor() {
 		updatePosition();
 	}
-	
+
+	/**
+	 * Creates and returns a new player projectile.
+	 * Plays a sound effect when firing.
+	 *
+	 * @return A new UserMissile instance positioned relative to the player aircraft
+	 */
 	@Override
 	public ActiveActorDestructible fireProjectile() {
 		SoundManager.playSound("P1942_00004.wav");
 		return new UserMissile(getTranslateX() + 128, getProjectileYPosition(PROJECTILE_Y_POSITION_OFFSET));
 	}
 
+	/**
+	 * Checks if the aircraft is currently moving horizontally.
+	 *
+	 * @return true if moving left or right, false if stationary
+	 */
 	private boolean isMovingHorizontal() {
 		return velocityMultiplierHorizontal != 0;
 	}
 
+	/**
+	 * Checks if the aircraft is currently moving vertically.
+	 *
+	 * @return true if moving up or down, false if stationary
+	 */
 	private boolean isMovingVertical() {
 		return velocityMultiplierVertical != 0;
 	}
 
+	/**
+	 * Initiates upward movement of the aircraft.
+	 */
 	public void moveUp() {
 		velocityMultiplierVertical = -1;
 	}
 
+	/**
+	 * Initiates downward movement of the aircraft.
+	 */
 	public void moveDown() {
 		velocityMultiplierVertical = 1;
 	}
 
+	/**
+	 * Initiates leftward movement of the aircraft.
+	 */
 	public void moveLeft() {
 		velocityMultiplierHorizontal = -1;
 	}
 
+	/**
+	 * Initiates rightward movement of the aircraft.
+	 */
 	public void moveRight() {
 		velocityMultiplierHorizontal = 1;
 	}
 
+	/**
+	 * Stops horizontal movement of the aircraft.
+	 */
 	public void stopHorizontal() {
 		velocityMultiplierHorizontal = 0;
 	}
 
+	/**
+	 * Stops vertical movement of the aircraft.
+	 */
 	public void stopVertical() {
 		velocityMultiplierVertical = 0;
 	}
 
+	/**
+	 * Gets the current number of enemy aircraft destroyed by the player.
+	 *
+	 * @return The number of kills
+	 */
 	public int getNumberOfKills() {
 		return numberOfKills;
 	}
 
+	/**
+	 * Increments the kill counter when an enemy is destroyed.
+	 */
 	public void incrementKillCount() {
 		numberOfKills++;
 	}
+
+	/**
+	 * Decrements the kill counter.
+	 * Used when correcting kill count or implementing specific game mechanics.
+	 */
 	public void decrementKillCount() {
 		numberOfKills--;
 	}

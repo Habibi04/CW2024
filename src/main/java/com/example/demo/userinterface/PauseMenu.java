@@ -13,13 +13,35 @@ import javafx.scene.paint.Color;
 import javafx.scene.layout.CornerRadii;
 import javafx.geometry.Insets;
 
+/**
+ * The {@link PauseMenu} class represents a modal menu displayed when the game is paused.
+ * It provides options to resume the game, restart the game, or return to the {@link MainMenu}.
+ */
 public class PauseMenu {
+
+    /** The stage for the {@link PauseMenu}. */
     private Stage pauseStage;
+
+    /** The scene for the active game. */
     private Scene gameScene;
+
+    /** Callback function to resume the game. */
     private Runnable resumeCallback;
+
+    /** Callback function to return to the {@link MainMenu}. */
     private Runnable mainMenuCallback;
+
+    /** Callback function to restart the game. */
     private Runnable restartCallback;
 
+    /**
+     * Constructs a new {@link PauseMenu} with the specified game scene and callback functions.
+     *
+     * @param gameScene        the scene of the game that is paused.
+     * @param resumeCallback   a {@link Runnable} to execute when the "Resume" button is clicked.
+     * @param mainMenuCallback a {@link Runnable} to execute when the "End Game" button is clicked.
+     * @param restartCallback  a {@link Runnable} to execute when the "Restart" button is clicked.
+     */
     public PauseMenu(Scene gameScene, Runnable resumeCallback, Runnable mainMenuCallback, Runnable restartCallback) {
         this.gameScene = gameScene;
         this.resumeCallback = resumeCallback;
@@ -57,11 +79,17 @@ public class PauseMenu {
         pauseStage.setScene(pauseScene);
     }
 
+    /**
+     * Displays the {@link PauseMenu} and stops the background sound.
+     */
     public void show() {
         SoundManager.stopBackgroundSound();
         pauseStage.showAndWait();
     }
 
+    /**
+     * Resumes the game by executing the resume callback and closing the {@link PauseMenu}.
+     */
     private void resumeGame() {
         SoundManager.playBackgroundSound();
 
@@ -71,6 +99,9 @@ public class PauseMenu {
         pauseStage.close();
     }
 
+    /**
+     * Restarts the game by executing the restart callback and closing the {@link PauseMenu}.
+     */
     private void restartGame() {
         if (restartCallback != null) {
             restartCallback.run();
@@ -78,6 +109,9 @@ public class PauseMenu {
         pauseStage.close();
     }
 
+    /**
+     * Ends the game by executing the {@link MainMenu} callback and closing the {@link PauseMenu}.
+     */
     private void endGame() {
         if (mainMenuCallback != null) {
             mainMenuCallback.run();
@@ -85,6 +119,11 @@ public class PauseMenu {
         pauseStage.close();
     }
 
+    /**
+     * Checks if the {@link PauseMenu} is currently being displayed.
+     *
+     * @return true if the pause menu is showing. false otherwise.
+     */
     public boolean isShowing() {
         return pauseStage.isShowing();
     }
