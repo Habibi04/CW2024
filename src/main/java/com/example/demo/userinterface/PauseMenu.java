@@ -52,6 +52,7 @@ public class PauseMenu {
         pauseStage = new Stage();
         pauseStage.initModality(Modality.APPLICATION_MODAL);
         pauseStage.setTitle("Game Paused");
+        pauseStage.setOnCloseRequest(event -> resumeCallback.run());
 
         VBox pauseLayout = new VBox(20);
         pauseLayout.setAlignment(Pos.CENTER);

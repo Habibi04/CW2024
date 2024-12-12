@@ -53,8 +53,8 @@ public class InputManager {
      * @param background the {@link Node} receiving key events.
      */
     private void initializeBackgroundInputs(Node background) {
-        background.setOnKeyPressed(e -> handleKeyPress(e));
-        background.setOnKeyReleased(e -> handleKeyRelease(e));
+        background.setOnKeyPressed(this::handleKeyPress);
+        background.setOnKeyReleased(this::handleKeyRelease);
     }
 
     /**
