@@ -5,6 +5,9 @@ import com.example.demo.userinterface.GameOverImage;
 import com.example.demo.userinterface.HeartDisplay;
 import com.example.demo.userinterface.WinImage;
 import javafx.scene.Group;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 /**
  * Manages the visual elements of a game level, including {@link HeartDisplay},
@@ -52,6 +55,17 @@ public class LevelView {
 		this.heartDisplay = new HeartDisplay(HEART_DISPLAY_X_POSITION, HEART_DISPLAY_Y_POSITION, heartsToDisplay);
 		this.winImage = new WinImage(WIN_IMAGE_X_POSITION, WIN_IMAGE_Y_POSITION);
 		this.gameOverImage = new GameOverImage(LOSS_SCREEN_X_POSITION, LOSS_SCREEN_Y_POSISITION);
+
+		Text information = new Text("press escape to Pause");
+		information.setFill(Color.WHITE);
+		information.setFont(new Font("Arial",30));
+		information.setX(500);
+		information.setY(700);
+
+		if(!root.getChildren().contains(information)){
+			root.getChildren().add(information);
+			information.toFront();
+		}
 	}
 
 	/**

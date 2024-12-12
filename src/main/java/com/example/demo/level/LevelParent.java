@@ -198,6 +198,7 @@ public abstract class LevelParent extends Observable {
 		background.setFitWidth(screenWidth);
 		InputManager.getInstance().initialize(background, user, this::fireProjectile);
 		root.getChildren().add(background);
+		background.toBack();
 	}
 
 	/**
