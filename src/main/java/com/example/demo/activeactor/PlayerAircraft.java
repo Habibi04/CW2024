@@ -3,48 +3,48 @@ package com.example.demo.activeactor;
 import com.example.demo.SoundManager;
 
 /**
- * Represents the player-controlled aircraft in the game.
- * Handles player movement, boundary checking, projectile firing, and kill counting.
- * Extends FighterAircraft to inherit basic aircraft functionality.
+ * Represents the {@link PlayerAircraft} in the game.
+ * Handles {@link PlayerAircraft} movement, boundary checking, projectile firing, and kill counting.
+ * Extends {@link FighterAircraft} to inherit basic aircraft functionality.
  */
 public class PlayerAircraft extends FighterAircraft {
 
-	/** The filename of the player aircraft sprite image */
+	/** The filename of image */
 	private static final String IMAGE_NAME = "userplane.png";
-	/** Right boundary limit for player movement */
+	/** Right boundary limit for movement */
 	private static final double X_LOWER_BOUND = 1000;
-	/** Left boundary limit for player movement */
+	/** Left boundary limit for movement */
 	private static final double X_UPPER_BOUND = 0;
-	/** Upper boundary limit for player movement */
+	/** Upper boundary limit for movement */
 	private static final double Y_UPPER_BOUND = -40;
-	/** Lower boundary limit for player movement */
+	/** Lower boundary limit for movement */
 	private static final double Y_LOWER_BOUND = 600.0;
-	/** Starting X position for the player aircraft */
+	/** Starting X position for */
 	private static final double INITIAL_X_POSITION = 5.0;
-	/** Starting Y position for the player aircraft */
+	/** Starting Y position for */
 	private static final double INITIAL_Y_POSITION = 300.0;
-	/** Height of the player aircraft sprite in pixels */
+	/** Height in pixels */
 	private static final int IMAGE_HEIGHT = 50;
 	/** Base horizontal movement speed */
 	private static final int HORIZONTAL_VELOCITY = 8;
 	/** Base vertical movement speed */
 	private static final int VERTICAL_VELOCITY = 8;
-	/** Horizontal offset for projectile spawn position */
+	/** Horizontal offset for {@link UserMissile} spawn position */
 	private static final int PROJECTILE_X_POSITION = 110;
-	/** Vertical offset for projectile spawn position */
+	/** Vertical offset for {@link UserMissile} spawn position */
 	private static final int PROJECTILE_Y_POSITION_OFFSET = 20;
 
 	/** Direction multiplier for horizontal movement (-1 for left, 0 for none, 1 for right) */
 	private int velocityMultiplierHorizontal;
 	/** Direction multiplier for vertical movement (-1 for up, 0 for none, 1 for down) */
 	private int velocityMultiplierVertical;
-	/** Counter for enemy aircraft destroyed by the player */
+	/** Counter for {@link EnemyAircraft} destroyed by the {@link PlayerAircraft} */
 	private int numberOfKills;
 
 	/**
-	 * Constructs a new PlayerAircraft with specified initial health.
+	 * Constructs a new {@link PlayerAircraft} with specified initial health.
 	 *
-	 * @param initialHealth The starting health points of the player aircraft
+	 * @param initialHealth The starting health points of the {@link PlayerAircraft}
 	 */
 	public PlayerAircraft(int initialHealth) {
 		super(IMAGE_NAME, IMAGE_HEIGHT, INITIAL_X_POSITION, INITIAL_Y_POSITION, initialHealth);
@@ -52,7 +52,7 @@ public class PlayerAircraft extends FighterAircraft {
 	}
 
 	/**
-	 * Updates the aircraft's position based on current movement multipliers.
+	 * Updates the position based on current movement multipliers.
 	 * Checks and enforces boundary limits for both horizontal and vertical movement.
 	 */
 	@Override
@@ -76,7 +76,7 @@ public class PlayerAircraft extends FighterAircraft {
 	}
 
 	/**
-	 * Performs per-frame updates for the player aircraft.
+	 * Performs per-frame updates for the {@link PlayerAircraft}.
 	 * Currently only updates position.
 	 */
 	@Override
@@ -85,10 +85,10 @@ public class PlayerAircraft extends FighterAircraft {
 	}
 
 	/**
-	 * Creates and returns a new player projectile.
+	 * Creates and returns a new {@link PlayerAircraft} {@link UserMissile}.
 	 * Plays a sound effect when firing.
 	 *
-	 * @return A new UserMissile instance positioned relative to the player aircraft
+	 * @return A new {@link UserMissile} instance positioned relative to the {@link PlayerAircraft}.
 	 */
 	@Override
 	public ActiveActorDestructible fireProjectile() {
@@ -97,7 +97,7 @@ public class PlayerAircraft extends FighterAircraft {
 	}
 
 	/**
-	 * Checks if the aircraft is currently moving horizontally.
+	 * Checks if it is currently moving horizontally.
 	 *
 	 * @return true if moving left or right, false if stationary
 	 */
@@ -106,7 +106,7 @@ public class PlayerAircraft extends FighterAircraft {
 	}
 
 	/**
-	 * Checks if the aircraft is currently moving vertically.
+	 * Checks if it is currently moving vertically.
 	 *
 	 * @return true if moving up or down, false if stationary
 	 */
@@ -115,49 +115,49 @@ public class PlayerAircraft extends FighterAircraft {
 	}
 
 	/**
-	 * Initiates upward movement of the aircraft.
+	 * Initiates upward movement.
 	 */
 	public void moveUp() {
 		velocityMultiplierVertical = -1;
 	}
 
 	/**
-	 * Initiates downward movement of the aircraft.
+	 * Initiates downward movement.
 	 */
 	public void moveDown() {
 		velocityMultiplierVertical = 1;
 	}
 
 	/**
-	 * Initiates leftward movement of the aircraft.
+	 * Initiates leftward movement.
 	 */
 	public void moveLeft() {
 		velocityMultiplierHorizontal = -1;
 	}
 
 	/**
-	 * Initiates rightward movement of the aircraft.
+	 * Initiates rightward movement.
 	 */
 	public void moveRight() {
 		velocityMultiplierHorizontal = 1;
 	}
 
 	/**
-	 * Stops horizontal movement of the aircraft.
+	 * Stops horizontal movement.
 	 */
 	public void stopHorizontal() {
 		velocityMultiplierHorizontal = 0;
 	}
 
 	/**
-	 * Stops vertical movement of the aircraft.
+	 * Stops vertical movement.
 	 */
 	public void stopVertical() {
 		velocityMultiplierVertical = 0;
 	}
 
 	/**
-	 * Gets the current number of enemy aircraft destroyed by the player.
+	 * Gets the current number of {@link EnemyAircraft} destroyed by the {@link PlayerAircraft}.
 	 *
 	 * @return The number of kills
 	 */
@@ -166,7 +166,7 @@ public class PlayerAircraft extends FighterAircraft {
 	}
 
 	/**
-	 * Increments the kill counter when an enemy is destroyed.
+	 * Increments the kill counter when an {@link EnemyAircraft} is destroyed.
 	 */
 	public void incrementKillCount() {
 		numberOfKills++;

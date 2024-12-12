@@ -2,10 +2,11 @@ package com.example.demo.activeactor;
 
 import com.example.demo.Destructible;
 import com.example.demo.SoundManager;
+import com.example.demo.userinterface.HeartDisplay;
 
 /**
  * An abstract base class for {@link ActiveActorDestructible} in the game.
- * Extends {@link ActiveActor} and implements the Destructible interface,
+ * Extends {@link ActiveActor} and implements the {@link Destructible} interface,
  * providing a foundation for game objects that can move, update,
  * and be destroyed.
  */

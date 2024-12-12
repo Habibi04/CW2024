@@ -57,7 +57,6 @@ public class MovingBossAircraft extends FighterAircraft {
 	/**
 	 * Attempts to create a new {@link EnemyMissile} based on the fire rate probability.
 	 * If a {@link EnemyMissile} is created, its position is offset from the boss's current position.
-	 *
 	 * @return A new {@link EnemyMissile} if firing conditions are met, null otherwise
 	 */
 	@Override

@@ -3,7 +3,7 @@ package com.example.demo.activeactor;
 /**
  * An abstract base class representing {@link Missile}s in the game.
  *
- * Extends ActiveActorDestructible to provide a common implementation
+ * Extends {@link ActiveActorDestructible} to provide a common implementation
  * for different types of {@link Missile}s, with a standard damage and destruction mechanism.
  */
 public abstract class Missile extends ActiveActorDestructible {
@@ -32,7 +32,6 @@ public abstract class Missile extends ActiveActorDestructible {
 
 	/**
 	 * Abstract method to update the {@link Missile}'s position.
-	 *
 	 * Must be implemented by subclasses to define specific movement behavior
 	 * for different types of {@link Missile}s.
 	 */

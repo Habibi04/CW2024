@@ -5,7 +5,7 @@ import javafx.scene.image.*;
 /**
  * An abstract base class representing an {@link ActiveActor} in the game.
  *
- * Extends ImageView to provide a base for game objects that can move and update
+ * Extends {@link ImageView} to provide a base for game objects that can move and update
  * their position. Provides common functionality for image loading, positioning,
  * and basic movement methods.
  */

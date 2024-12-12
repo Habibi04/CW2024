@@ -1,7 +1,7 @@
 package com.example.demo.activeactor;
 
 /**
- * Represents a {@link Missile} fired by enemy aircraft in the game.
+ * Represents a {@link Missile} fired by {@link EnemyAircraft} in the game.
  * This class extends the {@link Missile} class with specific characteristics
  * such as a unique enemy fire image and a left-moving trajectory.
  */

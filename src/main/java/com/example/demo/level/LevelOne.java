@@ -66,13 +66,13 @@ public class LevelOne extends LevelParent {
 	}
 
 	/**
-	 * Instantiates and returns a new instance of the {@link LevelView} class for the current level.
-	 * The method initializes the {@code LevelView} with the root node of the game scene and player's
-	 * initial health. The {@code LevelView} manages the display of elements such as hearts, win images, and
-	 * game-over screens specifically for this level.
+	 * Creates and returns a {@link LevelView} instance for this level, initialized with the
+	 * root node and {@link com.example.demo.activeactor.PlayerAircraft} initial health. Manages elements like hearts, {@link com.example.demo.userinterface.WinImage}, and
+	 * {@link com.example.demo.userinterface.GameOverImage} screens.
 	 *
-	 * @return A new {@link LevelView} instance configured with the root node and player's initial health.
+	 * @return A configured {@link LevelView} instance.
 	 */
+
 	@Override
 	protected LevelView instantiateLevelView() {
 		return new LevelView(getRoot(), PLAYER_INITIAL_HEALTH);

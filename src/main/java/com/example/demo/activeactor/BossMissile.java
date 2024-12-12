@@ -2,7 +2,6 @@ package com.example.demo.activeactor;
 
 /**
  * Represents a {@link Missile} fired by the {@link Boss} in the game.
- *
  * This class extends the {@link Missile} class with specific characteristics
  * such as a fireball image and left-moving trajectory.
  */
@@ -30,9 +29,9 @@ public class BossMissile extends Missile {
 	}
 
 	/**
-	 * Updates the {@link Missile}'s position by moving horizontally.
+	 * Updates the {@link BossMissile}'s position by moving horizontally.
 	 *
-	 * Moves the {@link Missile} to the left at a constant velocity.
+	 * Moves the {@link BossMissile} to the left at a constant velocity.
 	 */
 	@Override
 	public void updatePosition() {

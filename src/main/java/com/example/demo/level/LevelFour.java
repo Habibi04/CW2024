@@ -20,16 +20,13 @@ public class LevelFour extends LevelParent {
     }
 
     /**
-     * Checks if the game is over based on the {@link com.example.demo.activeactor.PlayerAircraft} state or their
-     * achievement of the specified kill target.
-     * This method determines the end state of the game by evaluating the
-     * {@link com.example.demo.activeactor.PlayerAircraft}'s current status and accomplishments:
-     * - If the {@link com.example.demo.activeactor.PlayerAircraft} has been destroyed, the {@link LevelParent#loseGame()} method is invoked
-     *   to handle the defeat conditions.
-     * - If the {@link com.example.demo.activeactor.PlayerAircraft} achieves the required number of kills to advance, the
-     *   {@link LevelParent#winGame} method is called to handle the victory conditions.
-     * This functionality is specific to {@link LevelFour} and overrides the parent
+     * Determines if the game ends based on the {@link com.example.demo.activeactor.PlayerAircraft}'s
+     * status or achievement of the kill target:
+     * - Invokes {@link LevelParent#loseGame()} if the aircraft is destroyed.
+     * - Calls {@link LevelParent#winGame()} upon achieving the required kills.
+     * Overrides the parent functionality for {@link LevelFour}.
      */
+
     @Override
     protected void checkIfGameOver() {
         if (userIsDestroyed()) {
@@ -40,13 +37,11 @@ public class LevelFour extends LevelParent {
     }
 
     /**
-     * Handles the win condition for the game by overriding the behavior from the {@link LevelParent}.
-     * Creates a delayed transition of 3 seconds before navigating to the main menu screen.
-     * Overrides:
-     * - {@link LevelParent#winGame()} to add additional behavior specific to this level when the
-     *   game win condition is met.
-     * - The method relies on the {@link MainMenu} class to handle the transition to the main menu screen.
+     * Overrides {@link LevelParent#winGame()} to handle the win condition with a 3-second delay
+     * before transitioning to the {@link MainMenu}.
+     * Adds behavior specific to this level when the win condition is met.
      */
+
     @Override
     protected void winGame() {
         super.winGame();
@@ -113,11 +108,10 @@ public class LevelFour extends LevelParent {
     }
 
     /**
-     * Determines whether the player has achieved the predefined number of kills required
-     * to advance to the next stage or complete the level.
-     * @return true if the player's number of kills is greater than or equal to the
-     *         required kill target; false otherwise.
+     * Checks if the {@link com.example.demo.activeactor.PlayerAircraft} meets the kill target to advance or complete the level.
+     * @return true if kills >= required target; false otherwise.
      */
+
     private boolean userHasReachedKillTarget() {
         return getUser().getNumberOfKills() >= KILLS_TO_ADVANCE;
     }

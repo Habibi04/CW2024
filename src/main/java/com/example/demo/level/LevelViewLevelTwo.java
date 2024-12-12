@@ -1,20 +1,21 @@
 package com.example.demo.level;
 
+import com.example.demo.userinterface.HeartDisplay;
 import com.example.demo.userinterface.ShieldImage;
 import javafx.scene.Group;
 
 /**
- * Represents the view for {@link LevelTwo} in the game, extending the base LevelView.
+ * Represents the view for {@link LevelTwo} in the game, extending the base {@link LevelViewLevelTwo}.
  *
- * This class specializes the {@link LevelView} for the second level, adding
- * specific visual elements such as a shield image unique to this level.
+ * This class specializes the {@link LevelViewLevelTwo} for the {@link LevelTwo}, adding
+ * specific visual elements such as a {@link ShieldImage} unique to this level.
  */
 public class LevelViewLevelTwo extends LevelView {
 
-	/** X-coordinate for positioning the shield image */
+	/** X-coordinate for positioning */
 	private static final int SHIELD_X_POSITION = 1150;
 
-	/** Y-coordinate for positioning the shield image */
+	/** Y-coordinate for positioning */
 	private static final int SHIELD_Y_POSITION = 500;
 
 	/** The root group to which game elements are added */

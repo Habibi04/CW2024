@@ -1,32 +1,33 @@
 package com.example.demo.level;
 
+import com.example.demo.activeactor.Boss;
 import com.example.demo.userinterface.GameOverImage;
 import com.example.demo.userinterface.HeartDisplay;
 import com.example.demo.userinterface.WinImage;
 import javafx.scene.Group;
 
 /**
- * Manages the visual elements of a game level, including heart displays,
- * win and game over images.
+ * Manages the visual elements of a game level, including {@link HeartDisplay},
+ * {@link WinImage} and {@link GameOverImage} images.
  */
 public class LevelView {
 
-	/** X-coordinate for positioning the heart display */
+	/** X-coordinate for positioning */
 	private static final double HEART_DISPLAY_X_POSITION = 5;
 
-	/** Y-coordinate for positioning the heart display */
+	/** Y-coordinate for positioning */
 	private static final double HEART_DISPLAY_Y_POSITION = 25;
 
-	/** X-coordinate for positioning the win image */
+	/** X-coordinate for positioning */
 	private static final int WIN_IMAGE_X_POSITION = 355;
 
-	/** Y-coordinate for positioning the win image */
+	/** Y-coordinate for positioning */
 	private static final int WIN_IMAGE_Y_POSITION = 175;
 
-	/** X-coordinate for positioning the game over screen */
+	/** X-coordinate for positioning */
 	private static final int LOSS_SCREEN_X_POSITION = 0;
 
-	/** Y-coordinate for positioning the game over screen */
+	/** Y-coordinate for positioning the {@link GameOverImage} screen */
 	private static final int LOSS_SCREEN_Y_POSISITION = 0;
 
 	/** The root group to which game elements are added */
@@ -54,7 +55,7 @@ public class LevelView {
 	}
 
 	/**
-	 * Adds the heart display to the root group.
+	 * Adds the {@link HeartDisplay} to the root group.
 	 * Typically called to initialize the {@link com.example.demo.activeactor.PlayerAircraft} health visualization.
 	 */
 	public void showHeartDisplay() {
@@ -62,7 +63,7 @@ public class LevelView {
 	}
 
 	/**
-	 * Displays the win image on the screen.
+	 * Displays the {@link WinImage} on the screen.
 	 * Invoked when the {@link com.example.demo.activeactor.PlayerAircraft} successfully completes the level.
 	 */
 	public void showWinImage() {
@@ -71,7 +72,7 @@ public class LevelView {
 	}
 
 	/**
-	 * Displays the game over image on the screen.
+	 * Displays the {@link GameOverImage} on the screen.
 	 * Called when the {@link com.example.demo.activeactor.PlayerAircraft} fails to complete the level.
 	 */
 	public void showGameOverImage() {

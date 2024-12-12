@@ -1,6 +1,7 @@
 package com.example.demo.userinterface;
 
 import com.example.demo.SoundManager;
+import com.example.demo.activeactor.PlayerAircraft;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
@@ -122,7 +123,7 @@ public class PauseMenu {
     /**
      * Checks if the {@link PauseMenu} is currently being displayed.
      *
-     * @return true if the pause menu is showing. false otherwise.
+     * @return true if the {@link PauseMenu} is showing. false otherwise.
      */
     public boolean isShowing() {
         return pauseStage.isShowing();

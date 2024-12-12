@@ -31,7 +31,7 @@ public class LevelThree extends LevelParent {
     }
 
     /**
-     * Initializes the friendly units into the game scene for this level by adding the {@link com.example.demo.activeactor.PlayerAircraft}
+     * Initializes the {@link com.example.demo.activeactor.PlayerAircraft} into the game scene for this level by adding the {@link com.example.demo.activeactor.PlayerAircraft}
      * to the root node of the game.
      */
     @Override

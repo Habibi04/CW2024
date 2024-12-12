@@ -1,11 +1,12 @@
 package com.example.demo.userinterface;
 
+import com.example.demo.activeactor.PlayerAircraft;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
  * The {@link WinImage} class represents a graphical "You Win" image displayed
- * when the player achieves victory in the game. It extends {@link ImageView}
+ * when the {@link PlayerAircraft} achieves victory in the game. It extends {@link ImageView}
  * to handle the image display and positioning.
  */
 public class WinImage extends ImageView {

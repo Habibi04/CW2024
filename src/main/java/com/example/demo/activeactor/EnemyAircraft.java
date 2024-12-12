@@ -38,9 +38,9 @@ public class EnemyAircraft extends FighterAircraft {
 	/**
 	 * Constructs an {@link EnemyAircraft} with specified position and level context.
 	 *
-	 * @param levelParent The parent level managing this {@link EnemyAircraft}
-	 * @param initialXPos The initial x-coordinate position of the aircraft
-	 * @param initialYPos The initial y-coordinate position of the aircraft
+	 * @param levelParent The parent level managing this {@link EnemyAircraft}.
+	 * @param initialXPos The initial x-coordinate position of the {@link EnemyAircraft}.
+	 * @param initialYPos The initial y-coordinate position of the {@link EnemyAircraft}.
 	 */
 	public EnemyAircraft(LevelParent levelParent, double initialXPos, double initialYPos) {
 		super(IMAGE_NAME, IMAGE_HEIGHT, initialXPos, initialYPos, INITIAL_HEALTH);
@@ -49,7 +49,7 @@ public class EnemyAircraft extends FighterAircraft {
 	}
 
 	/**
-	 * Updates the aircraft's position by moving horizontally.
+	 * Updates the {@link EnemyAircraft}'s position by moving horizontally.
 	 *
 	 * Moves the {@link EnemyAircraft} to the left at a constant velocity.
 	 */

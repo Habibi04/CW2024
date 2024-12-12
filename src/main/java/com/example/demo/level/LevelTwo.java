@@ -16,8 +16,8 @@ public class LevelTwo extends LevelParent {
 	}
 
 	/**
-	 * Initializes friendly units for the current game level.
-	 * Adds the user's game character to the root scene or container.
+	 * Initializes {@link com.example.demo.activeactor.PlayerAircraft} for the current game level.
+	 * Adds the {@link com.example.demo.activeactor.PlayerAircraft} game character to the root scene or container.
 	 */
 	@Override
 	protected void initializeFriendlyUnits() {
@@ -28,8 +28,8 @@ public class LevelTwo extends LevelParent {
 	 * Checks the current game state to determine if the game is over.
 	 * <p>
 	 * Implements two primary game-ending conditions:
-	 * 1. If the user's character is destroyed, the game is lost
-	 * 2. If the boss is destroyed, the game progresses to the next level
+	 * 1. If the {@link com.example.demo.activeactor.PlayerAircraft}'s character is destroyed, the game is lost
+	 * 2. If the {@link Boss} is destroyed, the game progresses to the next level
 	 */
 	@Override
 	protected void checkIfGameOver() {
@@ -58,7 +58,7 @@ public class LevelTwo extends LevelParent {
 	/**
 	 * Creates and instantiates the view for the current game level.
 	 *
-	 * @return The instantiated {@link LevelView} for Level Two
+	 * @return The instantiated {@link LevelView} for {@link LevelTwo}
 	 */
 	@Override
 	protected LevelView instantiateLevelView() {

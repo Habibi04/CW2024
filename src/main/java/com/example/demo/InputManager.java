@@ -58,7 +58,7 @@ public class InputManager {
     }
 
     /**
-     * Handles key press events to perform player movements or trigger actions.
+     * Handles key press events to perform {@link PlayerAircraft} movements or trigger actions.
      *
      * @param e the {@link KeyEvent} representing the key press.
      */
@@ -72,7 +72,7 @@ public class InputManager {
     }
 
     /**
-     * Handles key release events to stop player movements when keys are released.
+     * Handles key release events to stop {@link PlayerAircraft} movements when keys are released.
      *
      * @param e the {@link KeyEvent} representing the key release.
      */

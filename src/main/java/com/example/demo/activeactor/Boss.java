@@ -1,13 +1,14 @@
 package com.example.demo.activeactor;
 
 import com.example.demo.level.LevelParent;
+import com.example.demo.userinterface.HeartDisplay;
 import com.example.demo.userinterface.ShieldImage;
 
 import java.util.*;
 
 /**
  * Represents a {@link Boss} enemy aircraft in the game that implements advanced combat mechanics.
- * The {@link Boss} features a dynamic shield system, pattern-based movement, and projectile attacks.
+ * The {@link Boss} features a dynamic shield system, pattern-based movement, and {@link BossMissile} attacks.
  */
 public class Boss extends FighterAircraft {
 
@@ -39,7 +40,7 @@ public class Boss extends FighterAircraft {
 	private static final int Y_POSITION_UPPER_BOUND = -100;
 	/** Lower boundary for {@link Boss}'s vertical movement */
 	private static final int Y_POSITION_LOWER_BOUND = 475;
-	/** Maximum duration the shield can remain active */
+	/** Maximum duration the {@link ShieldImage} can remain active */
 	private static final int MAX_FRAMES_WITH_SHIELD = 500;
 
 	/** Reference to the parent level controlling this {@link Boss} instance */
@@ -187,18 +188,18 @@ public class Boss extends FighterAircraft {
 	}
 
 	/**
-	 * Checks if the shield should be activated based on random probability.
+	 * Checks if the {@link ShieldImage} should be activated based on random probability.
 	 *
-	 * @return true if shield should activate, false otherwise
+	 * @return true if {@link ShieldImage} should activate, false otherwise
 	 */
 	private boolean shieldShouldBeActivated() {
 		return Math.random() < BOSS_SHIELD_PROBABILITY;
 	}
 
 	/**
-	 * Checks if the shield has been active for its maximum duration.
+	 * Checks if the {@link ShieldImage} has been active for its maximum duration.
 	 *
-	 * @return true if shield duration has been exhausted, false otherwise
+	 * @return true if {@link ShieldImage} duration has been exhausted, false otherwise
 	 */
 	private boolean shieldExhausted() {
 		return framesWithShieldActivated == MAX_FRAMES_WITH_SHIELD;
@@ -222,7 +223,7 @@ public class Boss extends FighterAircraft {
 	}
 
 	/**
-	 * Gets the shield image object associated with this {@link Boss}.
+	 * Gets the {@link ShieldImage} object associated with this {@link Boss}.
 	 *
 	 * @return The {@link ShieldImage} instance used for visual shield effects
 	 */

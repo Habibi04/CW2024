@@ -1,7 +1,7 @@
 package com.example.demo.activeactor;
 
 /**
- * Represents a {@link UserMissile} fired by the user's aircraft in the game.
+ * Represents a {@link UserMissile} fired by the {@link PlayerAircraft} in the game.
  * This {@link UserMissile} moves horizontally across the screen at a constant velocity.
  * Extends the base {@link UserMissile} class with specific behavior for user-fired projectiles.
  */
