@@ -372,7 +372,6 @@ public abstract class LevelParent extends Observable {
 		SoundManager.stopBackgroundSound();
 
 		pauseGame();
-		System.out.println(timeline.getStatus());
 
 		Timeline timeline = new Timeline();
 		KeyFrame keyFrame = new KeyFrame(
