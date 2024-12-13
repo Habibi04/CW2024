@@ -48,7 +48,6 @@ public class LevelOne extends LevelParent {
 	 * Spawns {@link EnemyAircraft} for the current level based on the total number of enemies allowed
 	 * and a predefined probability. Newly created enemies are added to the game via
 	 * {@link #addEnemyUnit(ActiveActorDestructible)}.
-	 *
 	 * The enemy units are instances of {@link EnemyAircraft}, created with the level's screen width
 	 * as their initial X position, and a randomized Y position within bounds as calculated using
 	 * {@link #getEnemyMaximumYPosition()}.

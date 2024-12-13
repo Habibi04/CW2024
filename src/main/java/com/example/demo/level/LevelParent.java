@@ -97,9 +97,9 @@ public abstract class LevelParent extends Observable {
 	 */
 	public void pauseGame() {
 		timeline.pause();
-		isPaused = true;
 		user.stopHorizontal();
 		user.stopVertical();
+		isPaused = true;
 	}
 
 	/**
