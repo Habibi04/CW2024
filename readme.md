@@ -194,7 +194,6 @@ To compile and run the project, follow these steps:
 
 ***
 ## Unexpected Problems:
-
 1. The game kept playing in the background even though the Pause Menu class was invoked.Fixed by adding a pause game function in the level parent.
 2. player aircraft fires projectile even though the game is over.Called Pause game function in level parent.
 3. player aircraft movement continues automatically if game is paused while moving the aircraft and then resumed.Called the PlayerAircraft.stopVertical and stopHorizontal when the game is paused.
