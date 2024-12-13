@@ -19,7 +19,7 @@ import java.util.Objects;
 public class Tutorial {
 
     /** The relative path to the background image resource for the {@link Tutorial}. */
-    private static final String backgroundImageName = "/com/example/demo/images/background1.jpg";
+    private static final String backgroundImageName = "/com/example/demo/images/background1.1.jpg";
 
     /** The width of the {@link Tutorial} screen. */
     private static final int SCREEN_WIDTH = 1300;
@@ -57,12 +57,12 @@ public class Tutorial {
         tutorialLayout.getChildren().add(background);
 
         // Create instructions text with larger font size
-        Text instructions = new Text("Use the arrow keys to move:\n" +
-                "Up Arrow - Move Up\n" +
-                "Down Arrow - Move Down\n" +
-                "Left Arrow - Move Left\n" +
-                "Right Arrow - Move Right\n" +
-                "Space Bar - Shoot Enemies");
+        Text instructions = new Text("USE THE ARROW KEYS TO MOVE:\n" +
+                "UP ARROW - MOVE UP\n" +
+                "DOWN ARROW - MOVE DOWN\n" +
+                "LEFT ARROW - MOVE LEFT\n" +
+                "RIGHT ARROW - MOVE RIGHT\n" +
+                "SPACE BAR - SHOOT ENEMIES");
 
         // Set the font size to make the text larger
         instructions.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
