@@ -26,6 +26,7 @@ public class SoundManager {
         MediaPlayer sound = new MediaPlayer(
                 new Media(SoundManager.class.getResource("/com/example/demo/sounds/" + soundName).toExternalForm())
         );
+        sound.setVolume(0.025);
         sound.play();
     }
 
@@ -34,6 +35,8 @@ public class SoundManager {
      * restart from the beginning.
      */
     public static void playBackgroundSound() {
+        backgroundSound.setVolume(0.025);
+
         backgroundSound.setOnEndOfMedia(() -> {
             backgroundSound.seek(Duration.ZERO); // Restart the music from the beginning.
             backgroundSound.play();

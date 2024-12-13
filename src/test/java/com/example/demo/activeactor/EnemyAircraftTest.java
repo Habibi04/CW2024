@@ -14,22 +14,22 @@ class EnemyAircraftTest {
 
     private EnemyAircraft enemyAircraft;
 
-    // Static method to initialize JavaFX toolkit before any tests are run
+
     @BeforeAll
     static void initJavaFX() {
-        // Initialize the JavaFX toolkit before running any tests
+
         Platform.startup(() -> {});
     }
 
     @BeforeEach
     void setUp() {
-        // Initialize your EnemyAircraft object here, it can use mock values or real instances
+
         enemyAircraft = new EnemyAircraft(null, 500, 100); // Assume the second argument is the X position and third is Y
     }
 
     @Test
     void testInitialSetup() {
-        // Test the initial setup of the enemyAircraft object
+
         assertEquals(500, enemyAircraft.getLayoutX(), "Initial X position should be 500");
         assertEquals(100, enemyAircraft.getLayoutY(), "Initial Y position should be 100");
         assertEquals(1, enemyAircraft.getHealth(), "Initial health should be 1");
@@ -37,7 +37,7 @@ class EnemyAircraftTest {
 
     @Test
     void testFireProjectile() {
-        // Simulate multiple attempts to fire projectiles
+
         boolean firedAtLeastOnce = false;
         for (int i = 0; i < 1000; i++) { // Simulate enough iterations to hit the FIRE_RATE probability
             ActiveActorDestructible projectile = enemyAircraft.fireProjectile();
@@ -53,7 +53,7 @@ class EnemyAircraftTest {
 
     @Test
     void testFireProjectilePosition() {
-        // Use a loop to ensure a projectile is fired
+
         ActiveActorDestructible projectile = null;
         for (int i = 0; i < 1000; i++) {
             projectile = enemyAircraft.fireProjectile();

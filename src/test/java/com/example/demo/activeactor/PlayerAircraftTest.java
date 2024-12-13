@@ -16,7 +16,7 @@ class PlayerAircraftTest {
 
     @BeforeAll
     static void initJavaFX() {
-        // Initialize the JavaFX toolkit
+
         Platform.startup(() -> {});
     }
 

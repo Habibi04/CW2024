@@ -24,7 +24,7 @@ class MovingBossAircraftTest {
      */
     @BeforeEach
     void setUp() {
-        // Initialize MovingBossAircraft with example position values
+
         movingBossAircraft = new MovingBossAircraft(null, 500, 100);
     }
 
@@ -45,7 +45,7 @@ class MovingBossAircraftTest {
     void testFireProjectile() {
         boolean firedAtLeastOnce = false;
 
-        // Attempt to fire a projectile several times to account for randomness
+
         for (int i = 0; i < 1000; i++) {
             ActiveActorDestructible projectile = movingBossAircraft.fireProjectile();
             if (projectile != null) {
@@ -65,7 +65,7 @@ class MovingBossAircraftTest {
     void testFireProjectilePosition() {
         ActiveActorDestructible projectile = null;
 
-        // Loop until a projectile is fired
+
         for (int i = 0; i < 1000; i++) {
             projectile = movingBossAircraft.fireProjectile();
             if (projectile != null) {
@@ -75,7 +75,7 @@ class MovingBossAircraftTest {
 
         assertNotNull(projectile, "Projectile should not be null when fired");
 
-        // Verify the projectile's position
+
         assertEquals(400, projectile.getLayoutX(), "Projectile X position should be correctly offset");
         assertEquals(150, projectile.getLayoutY(), "Projectile Y position should be correctly offset");
     }
