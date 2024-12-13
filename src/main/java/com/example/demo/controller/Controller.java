@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import com.example.demo.level.LevelParent;
 import com.example.demo.userinterface.MainMenu;
 import com.example.demo.userinterface.PauseMenu;
+import com.example.demo.userinterface.Tutorial;
 
 /**
  * The {@link Controller} class manages the game flow, including transitioning between levels,
@@ -133,5 +134,13 @@ public class Controller implements Observer {
 			alert.setContentText("Error loading level: " + e.getMessage());
 			alert.show();
 		}
+	}
+
+	/**
+	 * Opens the tutorial screen.
+	 */
+	public void openTutorial() {
+		Tutorial tutorial = new Tutorial(stage);
+		tutorial.show();
 	}
 }

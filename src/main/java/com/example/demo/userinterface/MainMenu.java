@@ -4,21 +4,21 @@ import com.example.demo.controller.Controller;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.image.Image;
 
 import java.util.Objects;
 import java.util.Observable;
 
 /**
  * The {@link MainMenu} class represents the main menu of the application, providing
- * options for the user to start the game or exit the application.
+ * options for the user to start the game, open the tutorial, or exit the application.
  */
 public class MainMenu extends Observable {
 
-    /** The relative path to the background image resource for the  {@link MainMenu}. */
+    /** The relative path to the background image resource for the {@link MainMenu}. */
     private static final String backgroundImageName = "/com/example/demo/images/SKYBLAZER.jpg";
 
     /** The width of the main {@link MainMenu}. */
@@ -40,23 +40,31 @@ public class MainMenu extends Observable {
         buttonLayout.setTranslateX(SCREEN_WIDTH * 0.75);
         buttonLayout.setTranslateY(SCREEN_HEIGHT / 2);
 
+        // Create buttons for the main menu
         Button startGameButton = new Button("Start Game");
+        Button tutorialButton = new Button("Tutorial"); // New button for the tutorial
         Button exitButton = new Button("Exit");
 
+        // Style the buttons
         startGameButton.setStyle("-fx-font-size: 20; -fx-background-color: #00A; -fx-text-fill: #FFF;");
+        tutorialButton.setStyle("-fx-font-size: 20; -fx-background-color: #0A0; -fx-text-fill: #FFF;"); // Green color for tutorial button
         exitButton.setStyle("-fx-font-size: 20; -fx-background-color: #A00; -fx-text-fill: #FFF;");
 
-        buttonLayout.getChildren().addAll(startGameButton, exitButton);
+        // Add buttons to the layout
+        buttonLayout.getChildren().addAll(startGameButton, tutorialButton, exitButton);
         menuLayout.getChildren().addAll(buttonLayout);
 
+        // Create the main menu scene
         Scene mainMenuScene = new Scene(menuLayout, SCREEN_WIDTH, SCREEN_HEIGHT);
 
+        // Load and set the background image
         ImageView background = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(backgroundImageName)).toExternalForm()));
         background.setViewOrder(1); // Ensure the background is behind other elements
         background.setPreserveRatio(true);
         background.setFitWidth(SCREEN_WIDTH);
         menuLayout.getChildren().add(background);
 
+        // Set actions for the buttons
         startGameButton.setOnAction(e -> {
             try {
                 Controller controller = new Controller(stage);
@@ -66,8 +74,14 @@ public class MainMenu extends Observable {
             }
         });
 
+        tutorialButton.setOnAction(e -> {
+            Controller controller = new Controller(stage);
+            controller.openTutorial(); // Open the tutorial screen
+        });
+
         exitButton.setOnAction(e -> stage.close());
 
+        // Set the scene to the stage and show it
         stage.setScene(mainMenuScene);
         stage.show();
     }
