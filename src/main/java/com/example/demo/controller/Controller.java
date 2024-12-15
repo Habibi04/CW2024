@@ -129,7 +129,7 @@ public class Controller implements Observer {
 		try {
 			goToLevel((String) arg);
 		} catch (Exception e) {
-			// Show an error alert if transitioning to the next level fails
+
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setContentText("Error loading level: " + e.getMessage());
 			alert.show();

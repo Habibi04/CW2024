@@ -13,7 +13,7 @@ import javafx.scene.input.KeyEvent;
 public class InputManager {
 
     /** The single instance of the {@link InputManager}. */
-    private static InputManager instance;
+    static InputManager instance;
 
     /** The {@link PlayerAircraft} object controlled by the user. */
     private PlayerAircraft user;
