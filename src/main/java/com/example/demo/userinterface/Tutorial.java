@@ -49,14 +49,12 @@ public class Tutorial {
         VBox contentLayout = new VBox(20);
         contentLayout.setAlignment(Pos.CENTER);
 
-        // Load the background image
         ImageView background = new ImageView(new Image(Objects.requireNonNull(getClass().getResource(backgroundImageName)).toExternalForm()));
-        background.setViewOrder(1); // Ensure the background is behind other elements
+        background.setViewOrder(1);
         background.setFitWidth(SCREEN_WIDTH);
         background.setFitHeight(SCREEN_HEIGHT);
         tutorialLayout.getChildren().add(background);
 
-        // Create instructions text with larger font size
         Text instructions = new Text("USE THE ARROW KEYS TO MOVE:\n" +
                 "UP ARROW - MOVE UP\n" +
                 "DOWN ARROW - MOVE DOWN\n" +
@@ -64,13 +62,13 @@ public class Tutorial {
                 "RIGHT ARROW - MOVE RIGHT\n" +
                 "SPACE BAR - SHOOT ENEMIES");
 
-        // Set the font size to make the text larger
+
         instructions.setStyle("-fx-font-size: 24px; -fx-font-weight: bold;");
 
         instructions.setTranslateX((double) SCREEN_WIDTH / 2 - 200); // Adjusted for better centering
         instructions.setTranslateY((double) SCREEN_HEIGHT / 2 - 150); // Adjusted for better centering
 
-        // Create a back button with the same size as the instructions
+
         Button backButton = new Button("Back to Main Menu");
         backButton.setMinSize(400, 100); // Set the button size to match the instructions
         backButton.setStyle("-fx-font-size: 30px; -fx-font-weight: bold; -fx-background-color: #3A9; -fx-text-fill: #FFF;");
