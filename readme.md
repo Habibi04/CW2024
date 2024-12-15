@@ -21,6 +21,7 @@ To compile and run the project, follow these steps:
 
 1. Start Game Button
 2. Exit Button
+3. Tutorial Button
 
 - PAUSE MENU SCREEN
 
@@ -50,7 +51,7 @@ To compile and run the project, follow these steps:
 ***
 ## Features Not Working:
 
-- Shield effect for the enemy projectile
+- Shield effect for Enemy aircraft. 
 ***
 ## Features Not Implemented:
 
@@ -95,7 +96,11 @@ To compile and run the project, follow these steps:
 
 ### 7. Sound Manager :
 
-- The SoundManager class handles sound effects and background music:
+- The SoundManager class handles sound effects and background music.
+
+### 8. Tutorial :
+
+- This class provides tutorial information on how to play the game.
 
 ***
 ## Modified JAVA CLASSES:
